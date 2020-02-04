@@ -1,4 +1,4 @@
 #!/bin/bash
-curl -LO https://github.com/DarriusAlexander/speaklight-content/archive/master.zip  | grep -oP '"tag_name": "\K(.*)(?=")'
-unzip master.zip -d /opt/bitnami/wordpress
-mv /opt/bitnami/wordpress/wp-content-master /opt/bitnami/wp-content
+curl -LO https://github.com/DarriusAlexander/stayncharge-content/archive/master.zip  | grep -oP '"tag_name": "\K(.*)(?=")'
+unzip master.zip -d /opt/bitnami/moodle
+mv /opt/bitnami/wordpress/stayncharge-content-master /opt/bitnami/moodle

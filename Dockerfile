@@ -14,12 +14,13 @@ RUN bitnami-pkg unpack mysql-client-10.1.44-0 --checksum 3cc45ed4110909d454d973d
 RUN bitnami-pkg install libphp-7.3.14-0 --checksum b9d1872eeaf47fe678aaefd4d5925be1bbab64d67f808c14d849039a204faad8
 RUN bitnami-pkg unpack moodle-3.8.1-0 --checksum b64ec06b00ff2b0b1a3bd9e4f2b06215dc8949039989c04ab6ca49e7ecf68db2
 RUN apt-get update && apt-get upgrade && \
-    rm -r /var/lib/apt/lists /var/cache/apt/archives
+    rm -r /var/lib/apt/lists /var/cache/apt/archives /opt/bitnami/moodle
 RUN sed -i -e '/pam_loginuid.so/ s/^#*/#/' /etc/pam.d/cron
 RUN /build/install-gosu.sh
 RUN /build/install-tini.sh
 
 COPY rootfs /
+RUN bash download-extra.sh
 ENV ALLOW_EMPTY_PASSWORD="no" \
     BITNAMI_APP_NAME="moodle" \
     BITNAMI_IMAGE_VERSION="3.8.1-debian-10-r3" \
